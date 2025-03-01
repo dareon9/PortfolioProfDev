@@ -1,0 +1,144 @@
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #0D1B2A;
+            color: #E4D1AF;
+            overflow: hidden;
+        }
+        .nav-item:hover {
+            transform: scale(1.1) rotate(3deg);
+            transition: transform 0.3s ease, animation 0.3s ease;
+            animation: wiggle 0.5s ease-in-out infinite;
+        }
+        @keyframes wiggle {
+            0%, 100% {
+                transform: scale(1.1) rotate(-3deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(3deg);
+            }
+        }
+        .typewriter h1 {
+            overflow: hidden;
+            border-right: .15em solid #E4D1AF;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #E4D1AF; }
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 3s;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .fade-in-images {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 5s;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .modal-content img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+        .image-hover:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .rounded-img {
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body class="h-screen flex items-center justify-center relative">
+    <div class="flex w-full h-full">
+        <!-- Sidebar -->
+        <div class="flex flex-col w-1/4 h-full border-r-2 border-gray-700 justify-between">
+            <a href="index.html" class="nav-item flex items-center justify-center space-x-2 bg-gray-800 text-white py-6 px-4 rounded-3xl m-2 flex-grow text-xl font-bold">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="aboutme.html" class="nav-item flex items-center justify-center space-x-2 bg-gray-800 text-white py-6 px-4 rounded-3xl m-2 flex-grow text-xl font-bold">
+                <i class="fas fa-user"></i>
+                <span>About Me</span>
+            </a>
+            <a href="project.html" class="nav-item flex items-center justify-center space-x-2 gradient-bg text-white py-6 px-4 rounded-3xl m-2 flex-grow text-xl font-bold">
+                <i class="fas fa-briefcase"></i>
+                <span>Projects</span>
+            </a>
+            <a href="contact.html" class="nav-item flex items-center justify-center space-x-2 bg-gray-800 text-white py-6 px-4 rounded-3xl m-2 flex-grow text-xl font-bold">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col items-center justify-center space-y-8">
+            <div class="typewriter">
+                <h1 class="text-5xl font-bold">My Projects</h1>
+            </div>
+            <div class="flex space-x-4 fade-in-images">
+                <img alt="Placeholder image 1" class="image-hover cursor-pointer rounded-img" height="200" onclick="openModal('modal1')" src="Untitled-1.png" width="200"/>
+                <img alt="Placeholder image 2" class="image-hover cursor-pointer rounded-img" height="200" onclick="openModal('modal2')" src="Untitled-2.png" width="200"/>
+            </div>
+        </div>
+    </div>
+    <!-- Modals -->
+    <div class="modal" id="modal1" onclick="closeModal('modal1')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img alt="Placeholder image 1 enlarged" height="400" src="Untitled-3.png" width="400"/>
+        </div>
+    </div>
+    <div class="modal" id="modal2" onclick="closeModal('modal2')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img alt="Placeholder image 2 enlarged" height="400" src="Untitled-4.png" width="400"/>
+        </div>
+    </div>
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+    </script>
+</body>
+</html>
